@@ -1,0 +1,468 @@
+[gd_scene load_steps=29 format=3 uid="uid://bucgnp10k0433"]
+
+[ext_resource type="Script" uid="uid://dtnklyx3mwres" path="res://scripts/postcard.gd" id="1_jv5nr"]
+[ext_resource type="Texture2D" uid="uid://bj1jc81kjtijn" path="res://sprites/artflow_202509021657.png" id="3_qvd18"]
+[ext_resource type="Texture2D" uid="uid://cilwnq4b1f3fe" path="res://sprites/artflow_202509021709.png" id="4_kxxyv"]
+[ext_resource type="Texture2D" uid="uid://co2m51anihuu7" path="res://sprites/artflow_202509031226.png" id="5_0uoib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ja7i2"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxxyv"]
+animations = []
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnvri"]
+atlas = ExtResource("3_qvd18")
+region = Rect2(440, 0, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kiap"]
+atlas = ExtResource("3_qvd18")
+region = Rect2(0, 330, 220, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t2wkr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnvri")
+}],
+"loop": true,
+"name": &"blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kiap")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjr6s"]
+atlas = ExtResource("3_qvd18")
+region = Rect2(220, 330, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r4nu"]
+atlas = ExtResource("3_qvd18")
+region = Rect2(440, 330, 220, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exfk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjr6s")
+}],
+"loop": true,
+"name": &"blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r4nu")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2wkr"]
+atlas = ExtResource("4_kxxyv")
+region = Rect2(0, 0, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exfk4"]
+atlas = ExtResource("4_kxxyv")
+region = Rect2(220, 0, 220, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8vbeh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2wkr")
+}],
+"loop": true,
+"name": &"blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exfk4")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vbeh"]
+atlas = ExtResource("4_kxxyv")
+region = Rect2(440, 0, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sq1qa"]
+atlas = ExtResource("4_kxxyv")
+region = Rect2(0, 330, 220, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_es8iv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vbeh")
+}],
+"loop": true,
+"name": &"blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sq1qa")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es8iv"]
+atlas = ExtResource("4_kxxyv")
+region = Rect2(220, 330, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e36wk"]
+atlas = ExtResource("4_kxxyv")
+region = Rect2(440, 330, 220, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnmn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es8iv")
+}],
+"loop": true,
+"name": &"blank",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e36wk")
+}],
+"loop": true,
+"name": &"filled",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnmn2"]
+atlas = ExtResource("5_0uoib")
+region = Rect2(0, 0, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3dbp"]
+atlas = ExtResource("5_0uoib")
+region = Rect2(220, 0, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvspl"]
+atlas = ExtResource("5_0uoib")
+region = Rect2(440, 0, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6htpy"]
+atlas = ExtResource("5_0uoib")
+region = Rect2(0, 330, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cv11k"]
+atlas = ExtResource("5_0uoib")
+region = Rect2(220, 330, 220, 330)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4266k"]
+atlas = ExtResource("5_0uoib")
+region = Rect2(440, 330, 220, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cmet1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnmn2")
+}],
+"loop": true,
+"name": &"fill_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3dbp")
+}],
+"loop": true,
+"name": &"fill_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvspl")
+}],
+"loop": true,
+"name": &"fill_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6htpy")
+}],
+"loop": true,
+"name": &"fill_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cv11k")
+}],
+"loop": true,
+"name": &"fill_4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4266k")
+}],
+"loop": true,
+"name": &"fill_5",
+"speed": 5.0
+}]
+
+[node name="postcard" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
+custom_minimum_size = Vector2(500, 200)
+offset_left = 19.0
+offset_top = 356.0
+offset_right = 519.0
+offset_bottom = 556.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jv5nr")
+
+[node name="background_card_mode" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ja7i2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(450, 160)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="label_content" type="RichTextLabel" parent="MarginContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+bbcode_enabled = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="avatar" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(23, 34)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kxxyv")
+animation = &""
+
+[node name="label_author" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+drag_area_highlight_in_editor = true
+
+[node name="label_title2" type="Label" parent="HSplitContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+drag_area_highlight_in_editor = true
+
+[node name="label_title2" type="ColorRect" parent="HSplitContainer/VSplitContainer"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 13)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="label_title" type="RichTextLabel" parent="HSplitContainer/VSplitContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+
+[node name="underline" type="ColorRect" parent="HSplitContainer/VSplitContainer/label_title"]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 30.0
+offset_right = 93.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 1)
+
+[node name="approval_rating_container" type="HSplitContainer" parent="."]
+layout_mode = 2
+split_offset = 41
+
+[node name="placeholder" type="Label" parent="approval_rating_container"]
+layout_mode = 2
+
+[node name="approval_rating" type="Label" parent="approval_rating_container"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 10
+
+[node name="comment_container" type="HSplitContainer" parent="."]
+layout_mode = 2
+split_offset = 222
+dragging_enabled = false
+dragger_visibility = 1
+drag_area_highlight_in_editor = true
+
+[node name="placeholder" type="Label" parent="comment_container"]
+layout_mode = 2
+
+[node name="number_comments" type="Label" parent="comment_container"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 10
+text = "32"
+
+[node name="knowledge_container" type="HSplitContainer" parent="."]
+layout_mode = 2
+split_offset = 330
+dragging_enabled = false
+dragger_visibility = 1
+drag_area_highlight_in_editor = true
+
+[node name="placeholder" type="Label" parent="knowledge_container"]
+layout_mode = 2
+
+[node name="knowledge_value" type="Label" parent="knowledge_container"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 10
+
+[node name="surprise_container" type="HSplitContainer" parent="."]
+layout_mode = 2
+split_offset = 367
+dragging_enabled = false
+dragger_visibility = 1
+drag_area_highlight_in_editor = true
+
+[node name="placeholder" type="Label" parent="surprise_container"]
+layout_mode = 2
+
+[node name="surprise_value" type="Label" parent="surprise_container"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 10
+
+[node name="power_container" type="HSplitContainer" parent="."]
+layout_mode = 2
+split_offset = 454
+dragging_enabled = false
+dragger_visibility = 1
+drag_area_highlight_in_editor = true
+
+[node name="placeholder" type="Label" parent="power_container"]
+layout_mode = 2
+
+[node name="power_value" type="Label" parent="power_container"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 5
+
+[node name="Button" type="Button" parent="."]
+visibility_layer = 0
+z_index = 1
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="approval_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(39, 189)
+sprite_frames = SubResource("SpriteFrames_t2wkr")
+animation = &"blank"
+
+[node name="Button" type="Button" parent="approval_anim"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = -11.0
+offset_right = 9.0
+offset_bottom = 6.0
+metadata/_edit_use_anchors_ = true
+
+[node name="disapproval_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(79, 191)
+sprite_frames = SubResource("SpriteFrames_exfk4")
+animation = &"blank"
+
+[node name="Button" type="Button" parent="disapproval_anim"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -7.0
+offset_top = -14.0
+offset_right = 10.0
+offset_bottom = 3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="comment_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(228, 193)
+sprite_frames = SubResource("SpriteFrames_8vbeh")
+animation = &"blank"
+
+[node name="Button" type="Button" parent="comment_anim"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 5.0
+offset_bottom = 5.0
+metadata/_edit_use_anchors_ = true
+
+[node name="knowledge_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(334, 195)
+sprite_frames = SubResource("SpriteFrames_es8iv")
+animation = &"blank"
+
+[node name="Button" type="Button" parent="knowledge_anim"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -11.0
+offset_top = -15.0
+offset_right = 6.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true
+
+[node name="shock_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(370, 195)
+sprite_frames = SubResource("SpriteFrames_mnmn2")
+animation = &"blank"
+
+[node name="Button" type="Button" parent="shock_anim"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 9.0
+offset_bottom = 3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="power_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(476, 182)
+rotation = 1.5708
+scale = Vector2(0.294532, 0.111363)
+sprite_frames = SubResource("SpriteFrames_cmet1")
+animation = &"fill_0"
+
+[node name="Button" type="Button" parent="power_anim"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -23.7665
+offset_top = -125.715
+offset_right = -6.76652
+offset_bottom = -108.715
+scale = Vector2(3, 15)
+metadata/_edit_use_anchors_ = true

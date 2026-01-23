@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl3qgsaksyqpc"]
+
+[ext_resource type="Script" uid="uid://bd2cpybnvbc3f" path="res://scripts/button_agent_name.gd" id="1_6mpsq"]
+
+[node name="button_agent_name" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+toggle_mode = true
+script = ExtResource("1_6mpsq")

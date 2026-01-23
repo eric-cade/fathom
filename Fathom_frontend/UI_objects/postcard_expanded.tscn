@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4ptibo86obnp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6ycs"]
+animations = []
+
+[node name="postcard" type="PanelContainer"]
+z_index = 1
+offset_right = 1092.0
+offset_bottom = 960.0
+scale = Vector2(0.495208, 1.00038)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="background_expanded_mode" type="ColorRect" parent="."]
+layout_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
+clip_contents = false
+custom_minimum_size = Vector2(540, 850)
+offset_top = 91.0
+offset_right = 540.0
+offset_bottom = 941.0
+size_flags_vertical = 6
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="label_content" type="RichTextLabel" parent="CanvasLayer/ScrollContainer"]
+modulate = Color(0, 0, 0, 1)
+clip_contents = false
+custom_minimum_size = Vector2(540, 800)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="avatar" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(28, 60)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_r6ycs")
+animation = &""
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+split_offset = 100
+drag_area_highlight_in_editor = true
+
+[node name="label_title_buffer" type="RichTextLabel" parent="HSplitContainer"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="label_title" type="RichTextLabel" parent="HSplitContainer"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+clip_contents = false
+custom_minimum_size = Vector2(850, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="label_author" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
