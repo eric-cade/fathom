@@ -190,7 +190,6 @@ func _pick_bool(d: Dictionary, keys: Array, default: bool=false) -> bool:
 			return _safe_bool(d[k], default)
 	return default
 
-
 func _nz(v, fallback):
 	# Return fallback if the key exists but is null
 	return fallback if v == null else v
@@ -332,15 +331,10 @@ func fetch_posts_for_topic(topic: String) -> void:
 		return
 	_last_request = RequestKind.TOPIC
 	_last_topic = topic
-	var url := "%s/posts?topic=%s" % [GlobalVariables.API_BASE, topic]
+	var url := "%s/posts?topic=%s" % [GlobalVariables.api_base(), topic]
 	print("🔗 GET", url)
 
-	var headers_arr := GlobalVariables.api_headers()
-	var headers := PackedStringArray()
-	for h in headers_arr:
-		headers.append(str(h))
-	headers.append("Accept: application/json")
-
+	var headers := GlobalVariables.api_headers()
 	var err := ai_request.request(url, headers, HTTPClient.METHOD_GET)
 	if err != OK:
 		print("Request failed to start: ", err)
@@ -351,15 +345,10 @@ func fetch_mixed(count: int = 20) -> void:
 		return
 	_last_request = RequestKind.MIXED
 	_last_topic = ""
-	var url := "%s/posts/mixed?count=%d" % [GlobalVariables.API_BASE, count]
+	var url := "%s/posts/mixed?count=%d" % [GlobalVariables.api_base(), count]
 	print("🔗 GET", url)
-	
-	var headers_arr := GlobalVariables.api_headers()
-	var headers := PackedStringArray()
-	for h in headers_arr:
-		headers.append(str(h))
-	headers.append("Accept: application/json")
 
+	var headers := GlobalVariables.api_headers()
 	var err := ai_request.request(url, headers, HTTPClient.METHOD_GET)
 	if err != OK:
 		print("Request failed to start: ", err)
@@ -381,21 +370,15 @@ func fetch_more() -> void:
 
 	var url := ""
 	if _last_topic != "" and _last_topic != null:
-		url = "%s/posts?topic=%s&limit=%d&offset=%d" % [GlobalVariables.API_BASE, _last_topic, PAGE_SIZE, _paging_offset]
+		url = "%s/posts?topic=%s&limit=%d&offset=%d" % [GlobalVariables.api_base(), _last_topic, PAGE_SIZE, _paging_offset]
 	else:
-		url = "%s/posts?limit=%d&offset=%d" % [GlobalVariables.API_BASE, PAGE_SIZE, _paging_offset]
+		url = "%s/posts?limit=%d&offset=%d" % [GlobalVariables.api_base(), PAGE_SIZE, _paging_offset]
 	print("🔗 GET more ", url)
 
-	var headers_arr := GlobalVariables.api_headers()
-	var headers := PackedStringArray()
-	for h in headers_arr:
-		headers.append(str(h))
-	headers.append("Accept: application/json")
-
+	var headers := GlobalVariables.api_headers()
 	var err := ai_request.request(url, headers, HTTPClient.METHOD_GET)
 	if err != OK:
 		print("Request failed to start: ", err)
-		_is_loading_more = false
 
 func _on_RequestNode_request_completed(result: int, response_code: int, headers: Array, body: PackedByteArray) -> void:
 	print("HTTP status:", response_code, "result:", result)
@@ -481,7 +464,7 @@ func _on_RequestNode_request_completed(result: int, response_code: int, headers:
 
 	# -------- paging bookkeeping (for /posts?limit=&offset=) --------
 	if _last_request == RequestKind.MORE:
-		_paging_offset += PAGE_SIZE
+		_paging_offset += returned_len
 		_is_loading_more = false
 		if returned_len < PAGE_SIZE:
 			_end_of_feed = true
@@ -514,7 +497,7 @@ func _on_card_expand_requested(post_id: int, topic: String, brief: String) -> vo
 	expanded_card.call("show_post", topic, "Loading…")
 
 	# POST /posts/{id}/expand (server caches expanded_text)
-	var url := "%s/posts/%d/expand" % [GlobalVariables.API_BASE, post_id]
+	var url := "%s/posts/%d/expand" % [GlobalVariables.api_base(), post_id]
 	var headers := GlobalVariables.api_headers()
 	var body := JSON.stringify({})	# {} or {"force":true} to regenerate
 	var err := expand_req.request(url, headers, HTTPClient.METHOD_POST, body)
@@ -551,7 +534,7 @@ func _on_ExpandRequest_completed(_result: int, response_code: int, _headers: Arr
 	_pending_expand_id = -1
 
 func _on_card_vote_requested(post_id: int, value: int) -> void:
-	var url := "%s/posts/%d/vote" % [GlobalVariables.API_BASE, post_id]
+	var url := "%s/posts/%d/vote" % [GlobalVariables.api_base(), post_id]
 	var headers := GlobalVariables.api_headers()  # MUST include X-User-Id
 	var body := JSON.stringify({"value": value})
 
@@ -596,7 +579,7 @@ func _on_VoteRequest_completed(result: int, response_code: int, headers: Array, 
 	expanded_card.call("apply_vote_result", new_score, my_vote)
 
 func _on_card_react_requested(post_id: int, kind: String, value: bool) -> void:
-	var url := "%s/posts/%d/react" % [GlobalVariables.API_BASE, post_id]
+	var url := "%s/posts/%d/react" % [GlobalVariables.api_base(), post_id]
 	var headers := GlobalVariables.api_headers()
 	var payload := {"learned": value} if kind == "learned" else {"surprised": value}
 	var body := JSON.stringify(payload)
@@ -741,7 +724,7 @@ func _card_accepts_bulk_react(card: Object) -> bool:
 
 func _on_card_power_requested(post_id: int, enabled: bool) -> void:
 	print("[power] sending enabled=", enabled, " (pre-toggle _powered state is handled inside the card)")
-	var url := "%s/posts/%d/power" % [GlobalVariables.API_BASE, post_id]
+	var url := "%s/posts/%d/power" % [GlobalVariables.api_base(), post_id]
 	var headers := GlobalVariables.api_headers()
 	var body := JSON.stringify({"enabled": enabled})
 
@@ -820,7 +803,7 @@ func _on_PowerRequest_completed(result: int, response_code: int, headers: Array,
 		else:
 			# inline fetch fallback using ai_request (only if idle)
 			if ai_request.get_http_client_status() == HTTPClient.STATUS_DISCONNECTED:
-				var url = "%s/posts/%d" % [GlobalVariables.API_BASE, new_post_id]
+				var url = "%s/posts/%d" % [GlobalVariables.api_base(), new_post_id]
 				var headers2 = GlobalVariables.api_headers()
 				var err = ai_request.request(url, headers2, HTTPClient.METHOD_GET)
 				if err != OK:
@@ -878,16 +861,11 @@ func _fetch_single_post(post_id: int) -> void:
 	_last_topic = ""
 	_suppress_scroll_once = true
 
-	var url := "%s/posts/%d" % [GlobalVariables.API_BASE, post_id]
-	var headers_arr := GlobalVariables.api_headers()
-	var headers := PackedStringArray()
-	for h in headers_arr: headers.append(str(h))
-	headers.append("Accept: application/json")
-
-	print("🔗 GET", url)
+	var url := "%s/posts/%d" % [GlobalVariables.api_base(), post_id]
+	var headers := GlobalVariables.api_headers()
 	var err := ai_request.request(url, headers, HTTPClient.METHOD_GET)
 	if err != OK:
-		print("[power] single fetch failed to start: ", err)
+		print("Request failed to start: ", err)
 
 func _scroll_to_top_deferred() -> void:
 	# wait for layout
@@ -958,7 +936,7 @@ func _add_feed_card(post: Dictionary) -> void:
 
 func _fetch_and_insert_post(post_id: int, below_post_id: int) -> void:
 	print("fetching new post")
-	var url: String = "%s/posts/%d" % [GlobalVariables.API_BASE, post_id]
+	var url: String = "%s/posts/%d" % [GlobalVariables.api_base(), post_id]
 	var headers: PackedStringArray = GlobalVariables.api_headers()
 
 	var tmp := HTTPRequest.new()
@@ -1016,7 +994,7 @@ func _on_new_post_fetched(result: int, response_code: int, _headers: Array, body
 
 #///////////////////////////////////// probably defunct code :( /////////////////////////////////////////////
 func check_health() -> void:
-	var url := "%s/healthz" % GlobalVariables.API_BASE
+	var url := "%s/healthz" % GlobalVariables.api_base()
 	var err := ai_request.request(url, GlobalVariables.api_headers(), HTTPClient.METHOD_GET)
 	if err != OK:
 		print("Health request failed to start: ", err)
