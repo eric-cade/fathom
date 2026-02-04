@@ -54,7 +54,6 @@ http://127.0.0.1:8000/health
 
 ## Production backend
 
-The production backend lives elsewhere in the repository and is not required
-for local development.
+The production backend is not included in this repository. 
 
 Use this dummy backend unless you are working on deployment or backend internals.

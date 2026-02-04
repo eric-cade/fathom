@@ -471,8 +471,8 @@
       "learned_count": 1,
       "surprised_count": 1,
       "power_count": 1,
-      "expanded_text": null,
-      "expanded_at": null,
+      "expanded_text": "biology note: invariants show up when you compare across domains.\n\n— Expanded context —\nThis is dummy expanded text for post #42 in topic 'biology'.\nIt exists to exercise your modal UI, scrolling, and reaction/vote syncing.\n\nPotential directions:\n- Add tags for multi-axis organization beyond topic.\n- Track parent/child lineage for 'power spawn' and visible legacy.\n- Store per-user state keyed by X-User-Id.\n",
+      "expanded_at": "2026-02-04T00:51:43Z",
       "parent_id": null,
       "lineage": null
     },
@@ -1996,6 +1996,6 @@
     }
   },
   "meta": {
-    "saved_at": "2026-02-03T21:21:18Z"
+    "saved_at": "2026-02-04T00:51:43Z"
   }
 }
