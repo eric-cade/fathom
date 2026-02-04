@@ -25,3 +25,10 @@ venv/
 
 # Logs
 *.log
+
+# Dummy backend runtime files
+dummy_backend/.venv/
+dummy_backend/state.json
+dummy_backend/*.db
+dummy_backend/__pycache__/
+dummy_backend/.pytest_cache/
