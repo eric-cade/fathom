@@ -8,6 +8,11 @@ Rather than a production social platform, Fathom is designed as a **research tes
 
 ---
 
+# Research Paper
+Fathom is described in detail in the accompanying paper:
+Fathom: A Runnable Testbed for Studying AI-Mediated Information Dynamics
+[(Zenodo DOI link)](https://doi.org/10.5281/zenodo.18512285)
+
 ## What Fathom Is (TL;DR)
 
 - A **local, reproducible experimental system** (no API keys required)
